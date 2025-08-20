@@ -30,10 +30,10 @@ scrape_configs:
 
   - job_name: 'speedtest'
     metrics_path: /metrics
-    scrape_interval: 15m
+    scrape_interval: 2m
     scrape_timeout: 60s # running speedtest needs time to complete
     static_configs:
-      - targets: ['localhost:9696'] # <-- ¡CAMBIO AQUÍ!
+      - targets: ['localhost:9798'] # <-- ¡CAMBIO AQUÍ!
 
   - job_name: 'ping'
     metrics_path: /probe
