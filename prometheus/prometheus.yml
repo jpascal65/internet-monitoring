@@ -32,7 +32,6 @@ scrape_configs:
     metrics_path: /metrics
     scrape_interval: 15m
     scrape_timeout: 60s # running speedtest needs time to complete
-    
     static_configs:
       - targets: ['speedtest:9798'] # <-- ¡CAMBIO AQUÍ!
 
