@@ -66,6 +66,7 @@ services:
       - 9696:9696
     image: stefanwalther/speedtest-exporter
     restart: always
+    command: ["--accept-license", "--accept-gdpr"]
     networks:
       - back-tier
 
