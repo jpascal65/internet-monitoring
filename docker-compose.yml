@@ -61,12 +61,11 @@ services:
     tty: true
     stdin_open: true
     expose:
-      - 9696
+      - 9798
     ports:
-      - 9696:9696
-    image: stefanwalther/speedtest-exporter
+      - 9696:9798  # <-- ¡CAMBIO AQUÍ! Mapea el puerto 9798 del contenedor al 9696 del host
+    image: ghcr.io/miguelndecarvalho/speedtest-exporter
     restart: always
-    command: ["--accept-license", "--accept-gdpr"]
     networks:
       - back-tier
 
