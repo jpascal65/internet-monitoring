@@ -68,6 +68,12 @@ services:
     restart: always
     networks:
       - back-tier
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--timeout=2", "http://localhost:9798/metrics"]
+      interval: 1m
+      timeout: 10s
+      retries: 5
+      start_period: 5m # <-- ¡AÑADE ESTA LÍNEA!
 
   sonos:
     tty: true
