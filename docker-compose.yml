@@ -69,11 +69,11 @@ services:
     networks:
       - back-tier
     healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--timeout=2", "http://localhost:9798/metrics"]
+      test: ["CMD", "nc", "-z", "localhost", "9798"]
       interval: 1m
       timeout: 10s
       retries: 5
-      start_period: 15m # <-- ¡AÑADE ESTA LÍNEA!
+      start_period: 15m
 
   sonos:
     tty: true
