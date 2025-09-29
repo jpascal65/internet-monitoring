@@ -18,7 +18,7 @@ COPY --from=ghcr.io/miguelndecarvalho/speedtest-exporter:latest /app /app
 WORKDIR /app
 
 # Instala dependencias Python
-RUN pip install --no-cache-dir -r requirements.txt
+# RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 9798
 
