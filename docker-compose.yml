@@ -64,7 +64,9 @@ services:
       - 9798
     ports:
       - 9798:9798  # <-- ¡CAMBIO AQUÍ! Mapea el puerto 9798 del contenedor al 9696 del host
-    image: ghcr.io/miguelndecarvalho/speedtest-exporter
+    build:
+      context: .
+      dockerfile: speedtest.Dockerfile
     restart: always
     init: true
     entrypoint: ["/bin/sh", "-c", "apk add --no-cache netcat-openbsd && speedtest-exporter"]
