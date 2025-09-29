@@ -1,14 +1,16 @@
 FROM alpine:latest
 
-# Instala netcat y dependencias
-RUN apk add --no-cache netcat-openbsd ca-certificates
+# Instala Python, pip, netcat y dependencias
+RUN apk add --no-cache python3 py3-pip netcat-openbsd ca-certificates
 
-# Copia el binario de speedtest-exporter desde la imagen original
-COPY --from=ghcr.io/miguelndecarvalho/speedtest-exporter:latest /bin/speedtest-exporter /bin/speedtest-exporter
+# Copia el código fuente del exporter desde la imagen original
+COPY --from=ghcr.io/miguelndecarvalho/speedtest-exporter:latest /app /app
 
-# Usa usuario sin privilegios
-USER nobody
+WORKDIR /app
+
+# Instala dependencias Python
+RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 9798
 
-ENTRYPOINT ["/bin/speedtest-exporter"]
+CMD ["python3", "exporter.py"]
